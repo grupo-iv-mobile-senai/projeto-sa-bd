@@ -17,11 +17,10 @@ class VagasController {
   async adicionar(req, resp) {
     try {
       const novaVaga = req.body;
-      if (!novaVaga.nome_vaga || !novaVaga.valor || !novaVaga.logradouro || !novaVaga.estado || !novaVaga.capacidade) {
-        console.log(novaVaga);
-        resp.status(400).send('Todos os campos são obrigatórios.')
-        return;
-      }
+      // if (!novaVaga.nome_vaga || !novaVaga.valor || !novaVaga.logradouro || !novaVaga.estado || !novaVaga.capacidade) {
+        //   resp.status(400).send('Todos os campos são obrigatórios.');
+        //   return;
+        // }
       
       const conexao = await new ConexaoMySql().getConexao();
       const sql = 'INSERT INTO cadastro_vaga (nome_vaga, capacidade, valor, veiculo, logradouro, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
@@ -39,7 +38,7 @@ class VagasController {
       
       resp.send({ resultado });
       
-      // Fechando a conexão
+
     } catch (error) {
       resp.status(500).send(error.message);
     }
