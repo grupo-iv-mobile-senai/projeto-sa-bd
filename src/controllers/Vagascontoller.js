@@ -47,7 +47,35 @@ class VagasController {
 
     
 
-  atualizar() {}
+  async atualizar(req, resp) {
+    try {
+      const vagaEditar = req.body;
+
+      console.log(vagaEditar)
+      if (!vagaEditar.id_vaga || !vagaEditar.nome_Vaga || !vagaEditar.valorVaga) {
+        resp.status(400).send('Os campos id_cliente, nome_cliente e email_cliente são obrigatórios para atualizar.');
+        return;
+      }
+
+      const conexao = await new ConexaoMySql().getConexao();
+      const sql = 'UPDATE cliente SET nome_Vaga = ?, valorVaga = ?, capacidadeVaga = ?, logradouroVaga = ?, bairroVaga =?, cidadeVaga = ?, estadoVaga =? WHERE id_vaga = ?';
+      const [resultado] = await conexao.execute(sql, [
+        vagaEditar.id_vaga,
+        vagaEditar.nome_Vaga,
+        vagaEditar.valorVaga,
+        vagaEditar.capacidadeVaga,
+        vagaEditar.bairroVaga,
+        vagaEditar.cidadeVaga,
+        vagaEditar.estadoVaga,
+        
+        
+      ]);
+
+      resp.send({ resultado });
+    } catch (error) {
+      resp.status(500).send(error);
+    }
+  }
 
   async excluir() {
     try {
