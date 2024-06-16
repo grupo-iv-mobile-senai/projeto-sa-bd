@@ -77,7 +77,7 @@ class VagasController {
     }
   }
 
-  async excluir() {
+  async excluir(req,resp) {
     try {
       const conexao = await new ConexaoMySql().getConexao();
       const sql = 'DELETE FROM cadastro_vaga WHERE id_vaga = ?';

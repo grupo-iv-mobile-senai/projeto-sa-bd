@@ -32,7 +32,7 @@ const vagasController = new VagasController();
 app.get('/listar_vagas', vagasController.listarVagas);
 app.post('/adicionar_vaga', vagasController.adicionar);
 app.put('/vaga', vagasController.atualizar);
-app.delete('/vaga', vagasController.excluir);
+app.delete('/vaga/:id_vaga', vagasController.excluir);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
