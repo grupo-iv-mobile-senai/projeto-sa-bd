@@ -64,9 +64,12 @@ class UsuariosController {
 
   async excluir(req, resp) {
     try {
+  
       const conexao = await new ConexaoMySql().getConexao();
       const sql = 'DELETE FROM cliente WHERE id_cliente = ?';
-      const [resultado] = await conexao.execute(sql, [req.params.id_cliente]);
+      console.log(sql)
+      const [resultado] = await conexao.execute(sql, [+req.params.id_cliente]);
+    
       resp.send(resultado);
     } catch (error) {
       resp.status(500).send(error);

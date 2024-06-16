@@ -82,7 +82,6 @@ class VagasController {
       const conexao = await new ConexaoMySql().getConexao();
       const sql = 'DELETE FROM cadastro_vaga WHERE id_vaga = ?';
         const [resultado] = await conexao.execute(sql,[+req.params.id_vaga]);
-        
         resp.send(resultado);
       } catch (error) {
         resp.status(500).send(error);

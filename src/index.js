@@ -25,7 +25,7 @@ const usuariosController = new UsuariosController();
 app.get('/cliente', usuariosController.listarCliente);
 app.post('/cliente', usuariosController.adicionar);
 app.put('/cliente', usuariosController.atualizar);
-app.delete('/cliente/id:', usuariosController.excluir);
+app.delete('/cliente/:id_cliente', usuariosController.excluir);
 
 
 const vagasController = new VagasController();
