@@ -14,7 +14,7 @@ class VagasController {
   };
 
 
-  async adicionarz(req, resp) {
+  async adicionar(req, resp) {
     try {
       const novaVaga = req.body;
       // if (!novaVaga.nome_vaga || !novaVaga.valor || !novaVaga.logradouro || !novaVaga.estado || !novaVaga.capacidade) {
