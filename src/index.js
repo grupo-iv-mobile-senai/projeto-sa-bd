@@ -1,7 +1,7 @@
 import express from 'express';
 import UsuariosController from './controllers/UsuariosController.js';
 import cors from 'cors';
-import AutenticacaoController from './cotntrollers/autenticacaoController.js';
+import AutenticacaoController from './controllers/autenticacaoController.js';
 import VagasController from './controllers/Vagascontoller.js';
 
 const port = 3000;
